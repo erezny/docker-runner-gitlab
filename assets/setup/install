@@ -3,6 +3,8 @@ set -e
 
 adduser --disabled-login --gecos 'GitLab' git
 
+grep gitlab-1 /etc/hosts|head -n 1 | awk '{print $1 "\tgitlab.apps.dasbob.com"}'>> /etc/hosts
+
 # disable pam authentication for sshd
 sed 's/UsePAM yes/UsePAM no/' -i /etc/ssh/sshd_config
 sed 's/UsePrivilegeSeparation yes/UsePrivilegeSeparation no/' -i /etc/ssh/sshd_config
@@ -79,5 +81,3 @@ ln -s /app/phantomjs/bin/phantomjs /usr/bin/phantomjs
 phantomjs --version
 
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
-
-grep gitlab-1 /etc/hosts|head -n 1 | awk '{print $1 "\tgitlab.apps.dasbob.com"}'> /etc/hosts
