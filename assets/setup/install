@@ -77,3 +77,5 @@ else
 fi
 ln -s /app/phantomjs/bin/phantomjs /usr/bin/phantomjs
 phantomjs --version
+
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
