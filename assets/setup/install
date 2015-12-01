@@ -3,8 +3,6 @@ set -e
 
 adduser --disabled-login --gecos 'GitLab' git
 
-grep gitlab-1 /etc/hosts|head -n 1 | awk '{print $1 "\tgitlab.apps.dasbob.com"}'>> /etc/hosts
-
 # disable pam authentication for sshd
 sed 's/UsePAM yes/UsePAM no/' -i /etc/ssh/sshd_config
 sed 's/UsePrivilegeSeparation yes/UsePrivilegeSeparation no/' -i /etc/ssh/sshd_config
